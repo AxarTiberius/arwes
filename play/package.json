@@ -37,7 +37,7 @@
   },
   "scripts": {
     "clean": "rimraf ./public",
-    "develop": "webpack serve",
-    "build": "cross-env NODE_ENV=production webpack --progress"
+    "develop": "NODE_OPTIONS=--openssl-legacy-provider webpack serve",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider cross-env NODE_ENV=production webpack --progress"
   }
 }
