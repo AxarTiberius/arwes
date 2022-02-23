@@ -1,4 +1,4 @@
-import { HTMLProps, MutableRefObject, CSSProperties, ReactElement, ChangeEvent } from 'react';
+import { HTMLProps, MutableRefObject, CSSProperties, ReactElement, ChangeEvent, KeyboardEvent } from 'react';
 import PropTypes from 'prop-types';
 declare type TEXT_FIELD_TYPE = 'text' | 'email' | 'search' | 'password' | 'tel' | 'url' | 'number';
 declare const TEXT_FIELD_TYPE_VALUES: TEXT_FIELD_TYPE[];
@@ -16,6 +16,9 @@ interface TextFieldProps<E extends HTMLInputElement | HTMLTextAreaElement = HTML
     defaultValue?: string | number;
     value?: string | number;
     onChange?: (event: ChangeEvent<E>) => void;
+    onKeyPress?: (event: KeyboardEvent<E>) => void;
+    onKeyDown?: (event: KeyboardEvent<E>) => void;
+    onKeyUp?: (event: KeyboardEvent<E>) => void;
     inputProps?: HTMLProps<E>;
     hideLines?: boolean;
     palette?: string;
@@ -39,6 +42,9 @@ declare const TextField: {
         defaultValue: PropTypes.Requireable<string | number>;
         value: PropTypes.Requireable<string | number>;
         onChange: PropTypes.Requireable<(...args: any[]) => any>;
+        onKeyPress: PropTypes.Requireable<(...args: any[]) => any>;
+        onKeyDown: PropTypes.Requireable<(...args: any[]) => any>;
+        onKeyUp: PropTypes.Requireable<(...args: any[]) => any>;
         inputProps: PropTypes.Requireable<object>;
         hideLines: PropTypes.Requireable<boolean>;
         palette: PropTypes.Requireable<string>;

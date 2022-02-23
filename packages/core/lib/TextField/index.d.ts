@@ -15,6 +15,9 @@ declare const TextField: import("react").ForwardRefExoticComponent<import("./Tex
         defaultValue: import("prop-types").Requireable<string | number>;
         value: import("prop-types").Requireable<string | number>;
         onChange: import("prop-types").Requireable<(...args: any[]) => any>;
+        onKeyPress: import("prop-types").Requireable<(...args: any[]) => any>;
+        onKeyDown: import("prop-types").Requireable<(...args: any[]) => any>;
+        onKeyUp: import("prop-types").Requireable<(...args: any[]) => any>;
         inputProps: import("prop-types").Requireable<object>;
         hideLines: import("prop-types").Requireable<boolean>;
         palette: import("prop-types").Requireable<string>;

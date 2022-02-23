@@ -27,7 +27,7 @@ var TextField_styles_1 = require("./TextField.styles");
 var TEXT_FIELD_TYPE_VALUES = ['text', 'email', 'search', 'password', 'tel', 'url', 'number'];
 exports.TEXT_FIELD_TYPE_VALUES = TEXT_FIELD_TYPE_VALUES;
 var TextField = function (props) {
-    var multiline = props.multiline, type = props.type, name = props.name, placeholder = props.placeholder, autoComplete = props.autoComplete, autoFocus = props.autoFocus, readOnly = props.readOnly, spellCheck = props.spellCheck, required = props.required, disabled = props.disabled, defaultValue = props.defaultValue, value = props.value, onChange = props.onChange, inputProps = props.inputProps, hideLines = props.hideLines, palette = props.palette, className = props.className, style = props.style, rootRef = props.rootRef;
+    var multiline = props.multiline, type = props.type, name = props.name, placeholder = props.placeholder, autoComplete = props.autoComplete, autoFocus = props.autoFocus, readOnly = props.readOnly, spellCheck = props.spellCheck, required = props.required, disabled = props.disabled, defaultValue = props.defaultValue, value = props.value, onChange = props.onChange, onKeyPress = props.onKeyPress, onKeyDown = props.onKeyDown, onKeyUp = props.onKeyUp, inputProps = props.inputProps, hideLines = props.hideLines, palette = props.palette, className = props.className, style = props.style, rootRef = props.rootRef;
     var theme = react_2.useTheme();
     var bleeps = bleeps_1.useBleeps();
     var styles = react_1.useMemo(function () { return TextField_styles_1.generateStyles(theme, { palette: palette, multiline: multiline, disabled: disabled, readOnly: readOnly }); }, [theme, palette, multiline, disabled, readOnly]);
@@ -122,7 +122,7 @@ var TextField = function (props) {
                     }
                 }
             ] },
-            react_2.jsx(animated_1.Animated, __assign({ name: name, placeholder: placeholder, autoComplete: autoComplete, autoFocus: autoFocus, readOnly: readOnly, spellCheck: spellCheck, required: required, disabled: disabled, tabIndex: readOnly ? -1 : 0 }, inputProps, { defaultValue: defaultValue, value: value, onChange: onChange, as: multiline ? 'textarea' : 'input', type: multiline ? undefined : type, className: css_1.cx('arwes-text-field__input', inputProps === null || inputProps === void 0 ? void 0 : inputProps.className), css: styles.input, animated: {
+            react_2.jsx(animated_1.Animated, __assign({ name: name, placeholder: placeholder, autoComplete: autoComplete, autoFocus: autoFocus, readOnly: readOnly, spellCheck: spellCheck, required: required, disabled: disabled, tabIndex: readOnly ? -1 : 0 }, inputProps, { defaultValue: defaultValue, value: value, onChange: onChange, onKeyPress: onKeyPress, onKeyDown: onKeyDown, onKeyUp: onKeyUp, as: multiline ? 'textarea' : 'input', type: multiline ? undefined : type, className: css_1.cx('arwes-text-field__input', inputProps === null || inputProps === void 0 ? void 0 : inputProps.className), css: styles.input, animated: {
                     initialStyles: {
                         opacity: 0
                     },
@@ -161,6 +161,9 @@ TextField.propTypes = {
     defaultValue: prop_types_1.default.oneOfType([prop_types_1.default.string, prop_types_1.default.number]),
     value: prop_types_1.default.oneOfType([prop_types_1.default.string, prop_types_1.default.number]),
     onChange: prop_types_1.default.func,
+    onKeyPress: prop_types_1.default.func,
+    onKeyDown: prop_types_1.default.func,
+    onKeyUp: prop_types_1.default.func,
     inputProps: prop_types_1.default.object,
     hideLines: prop_types_1.default.bool,
     palette: prop_types_1.default.string,

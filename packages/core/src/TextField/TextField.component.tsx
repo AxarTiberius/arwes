@@ -5,6 +5,7 @@ import {
   CSSProperties,
   ReactElement,
   ChangeEvent,
+  KeyboardEvent,
   useMemo,
   useRef,
   useEffect
@@ -37,6 +38,9 @@ interface TextFieldProps <E extends HTMLInputElement | HTMLTextAreaElement = HTM
   defaultValue?: string | number
   value?: string | number
   onChange?: (event: ChangeEvent<E>) => void
+  onKeyPress?: (event: KeyboardEvent<E>) => void
+  onKeyDown?: (event: KeyboardEvent<E>) => void
+  onKeyUp?: (event: KeyboardEvent<E>) => void
   inputProps?: HTMLProps<E>
   hideLines?: boolean
   palette?: string
@@ -60,6 +64,9 @@ const TextField = (props: TextFieldProps): ReactElement => {
     defaultValue,
     value,
     onChange,
+    onKeyPress,
+    onKeyDown,
+    onKeyUp,
     inputProps,
     hideLines,
     palette,
@@ -197,6 +204,9 @@ const TextField = (props: TextFieldProps): ReactElement => {
           defaultValue={defaultValue}
           value={value}
           onChange={onChange}
+          onKeyPress={onKeyPress}
+          onKeyDown={onKeyDown}
+          onKeyUp={onKeyUp}
           as={multiline ? 'textarea' : 'input'}
           type={multiline ? undefined : type}
           className={cx('arwes-text-field__input', inputProps?.className)}
@@ -254,6 +264,9 @@ TextField.propTypes = {
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func,
+  onKeyPress: PropTypes.func,
+  onKeyDown: PropTypes.func,
+  onKeyUp: PropTypes.func,
   inputProps: PropTypes.object,
   hideLines: PropTypes.bool,
   palette: PropTypes.string,
